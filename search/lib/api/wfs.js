@@ -151,9 +151,6 @@ async function getGranules (request, response) {
     }
     const granulesResult = await cmr.findGranules(params);
     const granulesUmm = await cmr.findGranulesUmm(params);
-    if (!granulesResult.granules.length) {
-      return response.status(400).json('Items not found');
-    }
 
     const featureCollection = convert.cmrGranulesToFeatureCollection(event,
       granulesResult.granules,
